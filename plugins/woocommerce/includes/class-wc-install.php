@@ -1193,7 +1193,7 @@ CREATE TABLE {$wpdb->prefix}wc_tax_rate_classes (
 		$files = array(
 			array(
 				'base'    => $upload_dir['basedir'] . '/woocommerce_uploads',
-				'file'    => 'index.html',
+				'file'    => 'index.php',
 				'content' => '',
 			),
 			array(
@@ -1203,7 +1203,7 @@ CREATE TABLE {$wpdb->prefix}wc_tax_rate_classes (
 			),
 			array(
 				'base'    => WC_LOG_DIR,
-				'file'    => 'index.html',
+				'file'    => 'index.php',
 				'content' => '',
 			),
 		);
