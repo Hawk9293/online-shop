@@ -17,7 +17,7 @@ jQuery(function ($) {
             after: function () {
                 $('.events').append("<li>after event fired.</li>");
             }
-        });
+    });
 
     });
 

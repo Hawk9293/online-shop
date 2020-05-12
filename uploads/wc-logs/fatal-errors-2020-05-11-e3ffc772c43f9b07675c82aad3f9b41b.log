@@ -1,0 +1,16 @@
+2020-05-11T17:38:57+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' в D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php на строке 19
+
+2020-05-11T17:40:26+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' в D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php на строке 19
+
+2020-05-11T17:41:26+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' в D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php на строке 19
+
+2020-05-11T17:53:47+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function add_action(), 1 passed in D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php on line 25 and at least 2 expected in D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\plugin.php:403
+Stack trace:
+#0 D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php(25): add_action('init')
+#1 D:\OpenS\OSPanel\domains\wp-shop.local\wp-settings.php(497): include('D:\\OpenS\\OSPane...')
+#2 D:\OpenS\OSPanel\domains\wp-shop.local\wp-config.php(89): require_once('D:\\OpenS\\OSPane...')
+#3 D:\OpenS\OSPanel\domains\wp-shop.local\wp-load.php(37): require_once('D:\\OpenS\\OSPane...')
+#4 D:\OpenS\OSPanel\domains\wp-shop.local\wp-admin\admin-ajax.php(22): require_once('D:\\OpenS\\OSPane...')
+#5 {main}
+  thrown в D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\plugin.php на строке 403
+
