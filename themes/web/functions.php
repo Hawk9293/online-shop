@@ -59,6 +59,12 @@ function add_scripts(){
     wp_enqueue_script( 'responsive-tabs.min', ASSETS_PATH . 'js/responsive-tabs.js', array( 'jquery' ), '1.0', true );
     wp_enqueue_script( 'simpleCart.min.min', ASSETS_PATH . 'js/simpleCart.min.js', array( 'jquery' ), '1.0', true );
 };
+
+register_nav_menus([
+    'header_menu' => 'Меню в шапке',
+    'footer_menu' => 'Меню в подвале'
+]);
+
 //////////////////////////// my functions ////////////////////////////
 function my_print( $value, $color = 'white', $end = 0 ) {
     echo "<pre style='background:" . $color. "';>";

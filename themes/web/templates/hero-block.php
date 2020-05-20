@@ -1,3 +1,12 @@
+<?php
+$args = array(
+    'posts_per_page' => -1,
+    'post_type' => 'slider'
+);
+$slider = new WP_Query( $args );
+?>
+
+<?php if( $slider->have_posts() ): ?>
 <div class="banner">
     <div class="container">
         <div class="banner-bottom">
@@ -7,24 +16,14 @@
             <div class="banner-bottom-right">
                 <div  class="callbacks_container">
                     <ul class="rslides" id="slider4">
+                        <?php while ( $slider->have_posts() ): $slider->the_post();?>
                         <li>
                             <div class="banner-info">
-                                <h3>Smart But Casual</h3>
-                                <p>Start your shopping here...</p>
+                                <h3><?php the_title(); ?></h3>
+                                <p><?php the_content(); ?></p>
                             </div>
                         </li>
-                        <li>
-                            <div class="banner-info">
-                                <h3>Shop Online</h3>
-                                <p>Start your shopping here...</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="banner-info">
-                                <h3>Pack your Bag</h3>
-                                <p>Start your shopping here...</p>
-                            </div>
-                        </li>
+                        <?php endwhile; wp_reset_postdata();?>
                     </ul>
                 </div>
                 <!--banner-->
@@ -32,7 +31,8 @@
             <div class="clearfix"> </div>
         </div>
         <div class="shop">
-            <a href="single.html">SHOP COLLECTION NOW</a>
+            <a href="<?= esc_attr( get_option('slider_url') )  ?>"><?= esc_attr( get_option('slider_button') )  ?></a>
         </div>
     </div>
 </div>
+<?php endif; ?>

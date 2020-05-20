@@ -1,0 +1,14 @@
+2020-05-12T11:30:35+00:00 CRITICAL Object of class WP_Post could not be converted to string в D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\post-template.php на строке 49
+
+2020-05-12T11:40:09+00:00 CRITICAL Uncaught Error: Call to undefined method WP_Post::the_post() in D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\templates\hero-block.php:9
+Stack trace:
+#0 D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\template.php(724): require()
+#1 D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\template.php(671): load_template('D:\\OpenS\\OSPane...', false)
+#2 D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\general-template.php(168): locate_template(Array, true, false)
+#3 D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\woocommerce\archive-product.php(4): get_template_part('templates/hero', 'block')
+#4 D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\template-loader.php(98): include('D:\\OpenS\\OSPane...')
+#5 D:\OpenS\OSPanel\domains\wp-shop.local\wp-blog-header.php(19): require_once('D:\\OpenS\\OSPane...')
+#6 D:\OpenS\OSPanel\domains\wp-shop.local\index.php(17): require('D:\\OpenS\\OSPane...')
+#7 {main}
+  thrown в D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\templates\hero-block.php на строке 9
+
