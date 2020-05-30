@@ -1,7 +1,8 @@
 <?php
 $args = array(
     'posts_per_page' => -1,
-    'post_type' => 'slider'
+    'post_type' => 'slider',
+    'slider_cat' => 'verhnyaya-odezhda'
 );
 $slider = new WP_Query( $args );
 ?>

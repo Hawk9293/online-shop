@@ -21,6 +21,58 @@ function my_options(){
         echo '<input type="text", class="regular-text", name="slider_button", value="' . esc_attr( get_option('slider_button') ) . '">';
     };
 }
+//////////////////////////// Создаём класс для меню ////////////////////////////
+class Walker_Naw_Menu extends Walker_Nav_Menu {
+    public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $html = '';
+
+        // Ссылки 0 уровня
+        if ( $depth == 0 ){
+            $html .= '<li';
+            if ( $args -> walker -> has_children ){
+                $html .= ' class="dropdown"';
+            }
+            $html .= '><a ';
+            if ( $args -> walker -> has_children ){
+                $html .= ' class="dropdown-toggle" data-toggle="dropdown"';
+            }
+            $html .= ' href="%s">%s';
+            if ( $args -> walker -> has_children ){
+                $html .= '<b class="caret"></b>';
+            }
+            $html .= '</a>';
+            $output .= sprintf( $html, $item -> url, $item -> title );
+        }
+
+        // Ссылки 1 уровня
+        if ( $depth == 1 ){
+            $output .= '<div class="col-sm-4"><ul class="multi-column-dropdown"><h6>' . mb_strtoupper($item -> title . '</h6>');
+        }
+
+        // Ссылки 2 уровня
+        if ( $depth == 2 ){
+            $output .='<li><a href="' . $item -> url . '">' . $item -> title . '</a></li>';
+        }
+    }
+    public function end_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        if ( $depth == 0 ){
+            $output .= '</li>';
+        }
+        if ( $depth == 1 ){
+            $output .= '</ul></div>';
+        }
+    }
+    public function start_lvl( &$output, $depth = 0, $args = array() ) {
+        if ( $depth == 0 ){
+            $output .= '<ul class="dropdown-menu multi-column columns-3"><div class="row">';
+        }
+    }
+    public function end_lvl( &$output, $depth = 0, $args = array() ) {
+        if ( $depth == 0 ){
+            $output .= '</div></ul>';
+        }
+    }
+}
 //////////////////////////// Создаём кастомные типы записи ////////////////////////////
 add_action('init', 'hero_index');
 function hero_index(){
@@ -29,6 +81,7 @@ function hero_index(){
         'supports' => array('title', 'editor', 'thumbnail'),
         'menu_position' => 1,
         'menu_icon' => 'dashicons-format-gallery',
+        'taxonomy' => 'slider_cat',
         'labels' => array(
             'name' => 'Слайдер',
             'all_item' => 'Все слайды',
@@ -37,6 +90,37 @@ function hero_index(){
         )
     ));
 };
+// хук для регистрации
+add_action( 'init', 'create_taxonomy' );
+function create_taxonomy(){
+    // список параметров: wp-kama.ru/function/get_taxonomy_labels
+    register_taxonomy( 'slider_cat', [ 'slider' ], [
+        'label'                 => '', // определяется параметром $labels->name
+        'labels'                => [
+            'name'              => 'Категории',
+            'singular_name'     => 'Категория',
+            'search_items'      => 'Поиск категории',
+            'all_items'         => 'Все категории',
+            'view_item '        => 'Просмотр категорий',
+            'parent_item'       => 'Родительская категория',
+            'parent_item_colon' => 'Родительская категория:',
+            'edit_item'         => 'Редактировать категорию',
+            'update_item'       => 'Update Genre',
+            'add_new_item'      => 'Add New Genre',
+            'new_item_name'     => 'New Genre Name',
+            'menu_name'         => 'Категории',
+        ],
+        'description'           => '', // описание таксономии
+        'public'                => true,
+        'hierarchical'          => true,
+        'rewrite'               => true,
+        'capabilities'          => array(),
+        'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+        'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+        'show_in_rest'          => null, // добавить в REST API
+        'rest_base'             => null, // $taxonomy
+    ] );
+}
 //////////////////////////// Подключаем скрипты и стили ////////////////////////////
 add_action( 'wp_enqueue_scripts', 'add_styles' );
 function add_styles(){
