@@ -1,3 +1,5 @@
+<?php defined('ABSPATH' ) || exit;?>
+
 <div class="news-letter">
     <div class="container">
         <div class="join">

@@ -1,4 +1,5 @@
-<?php
+<?php defined('ABSPATH') || exit;
+
 get_header();
 get_template_part('templates/main','menu');
 get_template_part('templates/hero','block');

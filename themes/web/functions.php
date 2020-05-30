@@ -1,4 +1,5 @@
-<?php
+<?php defined('ABSPATH') || exit;
+
 //////////////////////////// Переменные ////////////////////////////
 define( 'ASSETS_PATH', get_template_directory_uri() . '/assets/' );
 //////////////////////////// Вкл поддержку woocommerce в нашей теме ////////////////////////////
@@ -21,6 +22,11 @@ function my_options(){
         echo '<input type="text", class="regular-text", name="slider_button", value="' . esc_attr( get_option('slider_button') ) . '">';
     };
 }
+//////////////////////////// Изменяем вывод заголовка магазина ////////////////////////////
+//add_filter('woocommerce_page_title', 'change_page_title');
+//function change_page_title( $page_title ){
+//    return '< $page_title >';
+//}
 //////////////////////////// Создаём класс для меню ////////////////////////////
 class Walker_Naw_Menu extends Walker_Nav_Menu {
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {

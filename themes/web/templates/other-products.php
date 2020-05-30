@@ -1,3 +1,5 @@
+<?php defined('ABSPATH' ) || exit;?>
+
 <div class="other-products">
     <div class="container">
         <h3 class="like text-center">Featured Collection</h3>

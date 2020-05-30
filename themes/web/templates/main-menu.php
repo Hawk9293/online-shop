@@ -1,3 +1,5 @@
+<?php defined('ABSPATH' ) || exit;?>
+
 <div class="banner-top">
     <div class="container">
         <nav class="navbar navbar-default" role="navigation">
