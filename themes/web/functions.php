@@ -22,11 +22,6 @@ function my_options(){
         echo '<input type="text", class="regular-text", name="slider_button", value="' . esc_attr( get_option('slider_button') ) . '">';
     };
 }
-//////////////////////////// Изменяем вывод заголовка магазина ////////////////////////////
-//add_filter('woocommerce_page_title', 'change_page_title');
-//function change_page_title( $page_title ){
-//    return '< $page_title >';
-//}
 //////////////////////////// Создаём класс для меню ////////////////////////////
 class Walker_Naw_Menu extends Walker_Nav_Menu {
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -154,6 +149,32 @@ register_nav_menus([
     'header_menu' => 'Меню в шапке',
     'footer_menu' => 'Меню в подвале'
 ]);
+
+//////////////////////////// Изменяем вывод заголовка магазина ////////////////////////////
+//add_filter('woocommerce_page_title', 'change_page_title');
+//function change_page_title( $page_title ){
+//    return '< $page_title >';
+//}
+//////////////////////////// Вывод миниатюры товара ////////////////////////////
+function woocommerce_template_loop_product_thumbnail(){
+    echo woocommerce_get_product_thumbnail();
+    echo '</a><div class="mask"><a href="' . get_the_permalink() . '">Quick View</a></div>';
+}
+//////////////////////////// Вывод заголовка товара ////////////////////////////
+function woocommerce_template_loop_product_title(){
+    echo '<a class="product_name" href="' . get_the_permalink() . '">'. wp_trim_words(get_the_title(),5) .'</a>';
+}
+
+//////////////////////////// Вывод плашки "Скидка" ////////////////////////////
+function change_sale_flash(){
+    $html =
+        '<div class="offer my-sale-block">
+            <p>40%</p>
+            <small>Sale</small>
+        </div>';
+    return $html;
+}
+add_filter('woocommerce_sale_flash', 'change_sale_flash');
 
 //////////////////////////// my functions ////////////////////////////
 function my_print( $value, $color = 'white', $end = 0 ) {

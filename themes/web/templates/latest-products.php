@@ -25,8 +25,8 @@
 
 <?php
 $args = [
-    'post_type' => 'products',
-    'post_per_page' => '9'
+    'post_type' => 'product',
+    'posts_per_page' => '9'
 ];
 
 global $wp_query;
@@ -43,7 +43,7 @@ if ($wp_query->have_posts()):
         $wp_query->the_post();
     ?>
 
-        <?php wc_get_template_part(); ?>
+        <?php wc_get_template_part( 'content','product' ); ?>
 
     <?php
     endwhile;
@@ -53,4 +53,4 @@ if ($wp_query->have_posts()):
 <?php endif; ?>
 
 
-<?php do_action(woocommerce_after_main_content); ?>
+<?php do_action('woocommerce_after_main_content'); ?>
