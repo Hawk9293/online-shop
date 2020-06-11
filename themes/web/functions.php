@@ -164,7 +164,6 @@ function woocommerce_template_loop_product_thumbnail(){
 function woocommerce_template_loop_product_title(){
     echo '<a class="product_name" href="' . get_the_permalink() . '">'. wp_trim_words(get_the_title(),5) .'</a>';
 }
-
 //////////////////////////// Вывод плашки "Скидка" ////////////////////////////
 function change_sale_flash(){
     $html =
@@ -175,7 +174,18 @@ function change_sale_flash(){
     return $html;
 }
 add_filter('woocommerce_sale_flash', 'change_sale_flash');
-
+//////////////////////////// Виджеты ////////////////////////////
+include 'widgets/fcollection/widget.php';
+function shop_widgets_init(){
+    register_sidebar([
+        'name' => 'Content Bottom',
+        'id' => 'content_bottom',
+        'description' => 'Блок для отображения слайдера',
+        'before_widget' => '',
+        'after_widget' => ''
+    ]);
+}
+add_action('widgets_init', 'shop_widgets_init');
 //////////////////////////// my functions ////////////////////////////
 function my_print( $value, $color = 'white', $end = 0 ) {
     echo "<pre style='background:" . $color. "';>";

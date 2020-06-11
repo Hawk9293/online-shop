@@ -1,4 +1,0 @@
-2020-05-08T13:59:21+00:00 CRITICAL Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32370056120897536 bytes) в D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\functions.php на строке 692
-
-2020-05-08T13:59:21+00:00 CRITICAL Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32370056120897536 bytes) в D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\functions.php на строке 692
-

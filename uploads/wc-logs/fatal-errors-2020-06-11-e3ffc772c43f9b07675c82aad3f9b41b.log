@@ -1,0 +1,15 @@
+2020-06-11T15:57:20+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function add_action(), 1 passed in D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php on line 187 and at least 2 expected in D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\plugin.php:403
+Stack trace:
+#0 D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\functions.php(187): add_action('widgets_init')
+#1 D:\OpenS\OSPanel\domains\wp-shop.local\wp-settings.php(497): include('D:\\OpenS\\OSPane...')
+#2 D:\OpenS\OSPanel\domains\wp-shop.local\wp-config.php(89): require_once('D:\\OpenS\\OSPane...')
+#3 D:\OpenS\OSPanel\domains\wp-shop.local\wp-load.php(37): require_once('D:\\OpenS\\OSPane...')
+#4 D:\OpenS\OSPanel\domains\wp-shop.local\wp-admin\admin.php(34): require_once('D:\\OpenS\\OSPane...')
+#5 D:\OpenS\OSPanel\domains\wp-shop.local\wp-admin\index.php(10): require_once('D:\\OpenS\\OSPane...')
+#6 {main}
+  thrown в D:\OpenS\OSPanel\domains\wp-shop.local\wp-includes\plugin.php на строке 403
+
+2020-06-11T16:35:03+00:00 CRITICAL syntax error, unexpected '}' в D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\widgets\fcollection\widget.php на строке 23
+
+2020-06-11T16:38:21+00:00 CRITICAL syntax error, unexpected 'update' (T_STRING), expecting '(' в D:\OpenS\OSPanel\domains\wp-shop.local\wp-content\themes\web\widgets\fcollection\widget.php на строке 24
+
