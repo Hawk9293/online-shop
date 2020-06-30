@@ -184,8 +184,25 @@ function shop_widgets_init(){
         'before_widget' => '',
         'after_widget' => ''
     ]);
+    register_sidebar([
+        'name'          => 'Footer Menu',
+        'id'            => 'footer_menu',
+        'description'   => 'Блок для отображения меню в подвале',
+        'before_widget' => '<div class="col-md-3 span1_of_4">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>'
+    ]);
 }
 add_action('widgets_init', 'shop_widgets_init');
+// Кастомизация меню в виджете
+add_filter('widget_nav_menu_args', 'change_menu','', 4);
+function change_menu($nav_menu_args, $nav_menu, $args, $instance){
+    $nav_menu_args['container'] = '';
+    $nav_menu_args['menu_class'] = 'f_nav';
+    return $nav_menu_args;
+}
+
 //////////////////////////// my functions ////////////////////////////
 function my_print( $value, $color = 'white', $end = 0 ) {
     echo "<pre style='background:" . $color. "';>";

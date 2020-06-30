@@ -1,18 +1,17 @@
-<h3 class="like text-center"><?=$title; ?></h3>
+<h3 class="like text-center"><?=$title;?></h3>
+
 <?php
 $args = [
-        'type_post' => 'product',
-        'posts_per_page' => $pcount,
-
-        'tax_query' => array(
-                array(
-                        'taxonomy' => 'product_visibility',
-                        'field' => 'name',
-                        'terms' => 'featured'
-                )
-        ),
-        'orderby' => ['ID', 'DESC']
-
+    'post_type' => 'product',
+    'posts_per_page' => $pcount,
+    'tax_query' => array(
+        array(
+                'taxonomy' => 'product_visibility',
+                'field' => 'name',
+                'terms' => 'featured'
+        )
+    ),
+    'orderby' => ['ID', 'DESC']
 ];
 $featured_query = new WP_Query($args);
 ?>
@@ -42,8 +41,16 @@ $featured_query = new WP_Query($args);
         $product_sku = $product->get_sku();
         $product_url = esc_url($product->add_to_cart_url());
 
-//        $class = implode(' ',
-//            array_filter())
+        $class = implode(' ',
+            array_filter(
+                array(
+                    'button',
+                    'product_type_' . $product->get_type(),
+                    $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                    $product->supports( 'ajax_add_to_cart' ) && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
+                )
+            )
+        );
     ?>
 
         <li>
@@ -51,9 +58,9 @@ $featured_query = new WP_Query($args);
                 <?=$img;?>
             </a>
             <div class="product liked-product simpleCart_shelfItem">
-                <a class="like_name" href="<?=$link;?>"><?=$title;?></a>
+                <a class="like_name" href="<?=$link;?>"><?=wp_trim_words($title,5);?></a>
                 <p>
-                    <a class="item_add"
+                    <a class=" <?=$class;?>"
                        data-quantity="1"
                        data-product-id="<?=$product_id; ?>"
                        data-product-sku="<?=$product_sku; ?>"

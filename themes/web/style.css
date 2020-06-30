@@ -508,8 +508,8 @@ h3.head.text-center {
 	display:block;
 	color:#000;
 	text-transform:uppercase;
-	font-size:14px;
-	letter-spacing:0px;
+	font-size:10px;
+	letter-spacing:2px;
 	text-decoration:none;
 }
 a.product_name {
@@ -597,7 +597,7 @@ a.like_name {
     display: block;
 	    color: #000;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 10px;
     letter-spacing: 2px;
     text-decoration: none;
 }
@@ -717,9 +717,9 @@ a.like_name {
 /*-- footer-starts-here --*/
 .span1_of_4 h4 {
     margin: 0 0 15px 0;
-    font-size: 23px;
+    font-size: 17px;
     color: #816263;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
     font-weight: 500;
 	    padding: 0;
 }
@@ -734,7 +734,7 @@ ul.f_nav li a{
     list-style-type: none;
     font-size: 14px;
     color: #B3B3B3;
-	text-transform:capitalize;
+	/*text-transform: capitalize;*/
 }
 .cards.text-center {
     border-top: 1px solid #E7E7E7;
