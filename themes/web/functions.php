@@ -47,7 +47,7 @@ class Walker_Naw_Menu extends Walker_Nav_Menu {
 
         // Ссылки 1 уровня
         if ( $depth == 1 ){
-            $output .= '<div class="col-sm-4"><ul class="multi-column-dropdown"><h6>' . mb_strtoupper($item -> title . '</h6>');
+            $output .= '<div class="col-sm-4"><ul class="multi-column-dropdown"><a href="' . $item -> url . '">'.'<h6>' . mb_strtoupper($item -> title . '</h6></a>');
         }
 
         // Ссылки 2 уровня
@@ -145,6 +145,13 @@ function add_scripts(){
     wp_enqueue_script( 'simpleCart.min.min', ASSETS_PATH . 'js/simpleCart.min.js', array( 'jquery' ), '1.0', true );
 };
 
+//переподключение wc скрипта add-to-cart.js
+add_action('wp_enqueue_scripts', 'reload_add_to_cart');
+function reload_add_to_cart(){
+    global $wp_scripts;
+    $wp_scripts->registered['wc-add-to-cart']->src = ASSETS_PATH . 'js/add-to-cart.js';
+}
+
 register_nav_menus([
     'header_menu' => 'Меню в шапке',
     'footer_menu' => 'Меню в подвале'
@@ -177,6 +184,13 @@ add_filter('woocommerce_sale_flash', 'change_sale_flash');
 //////////////////////////// Виджеты ////////////////////////////
 include 'widgets/fcollection/widget.php';
 function shop_widgets_init(){
+    register_sidebar([
+        'name' => 'Shop Widgets',
+        'id' => 'shop_widgets',
+        'description' => 'Блок виджетов',
+        'before_widget' => '',
+        'after_widget' => ''
+    ]);
     register_sidebar([
         'name' => 'Content Bottom',
         'id' => 'content_bottom',
